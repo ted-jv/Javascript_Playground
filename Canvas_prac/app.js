@@ -1,5 +1,6 @@
 const lineWidth = document.getElementById('line-width');
 const lineColor = document.getElementById('line-color');
+const colorOptions = Array.from(document.getElementsByClassName('color-option'));
 
 const canvas = document.querySelector('canvas');
 
@@ -33,9 +34,14 @@ function onLineWidthChange(e) {
 }
 function onLineColorChange(e) {
   ctx.strokeStyle = e.target.value;
-  console.info(e.target.value);
   ctx.beginPath();
 }
+function onLineColorClick(e) {
+  //   console.dir(e.target.dataset.color); // dir로 dataset의 내용 확인 가능
+  ctx.strokeStyle = e.target.dataset.color;
+  ctx.beginPath();
+}
+colorOptions.forEach(color => color.addEventListener('click', onLineColorClick));
 
 canvas.addEventListener('mousemove', mouseMove);
 canvas.addEventListener('mousedown', startPainting);
