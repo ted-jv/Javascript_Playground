@@ -1,9 +1,10 @@
 const lineWidth = document.getElementById('line-width');
 const color = document.getElementById('line-color');
+const colorOptions = Array.from(document.getElementsByClassName('color-option'));
 const fillBackgroundBtn = document.getElementById('fill-color-btn');
 const resetBtn = document.getElementById('reset-btn');
 const eraserBtn = document.getElementById('eraser-btn');
-const colorOptions = Array.from(document.getElementsByClassName('color-option'));
+const fileInput = document.getElementById('image-file');
 
 const canvas = document.querySelector('canvas');
 
@@ -86,6 +87,16 @@ function onEraserBtnClick() {
   color.value = '#ffffff';
   ctx.strokeStyle = 'white';
 }
+function onFileChange(e) {
+  const file = e.target.files[0];
+  const url = URL.createObjectURL(file);
+  const image = new Image();
+  image.src = url;
+  image.onload = function () {
+    ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    fileInput.value = null;
+  };
+}
 
 colorOptions.forEach(color => color.addEventListener('click', onColorClick));
 
@@ -102,6 +113,7 @@ color.addEventListener('change', onColorChange);
 fillBackgroundBtn.addEventListener('click', onFillBackgroundBtnClick);
 resetBtn.addEventListener('click', onResetBtnClick);
 eraserBtn.addEventListener('click', onEraserBtnClick);
+fileInput.addEventListener('change', onFileChange);
 
 /* 아래 컨버스에 색 다른 선들 만들기 */
 
