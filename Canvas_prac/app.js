@@ -1,6 +1,8 @@
 const lineWidth = document.getElementById('line-width');
 const color = document.getElementById('line-color');
 const fillBackgroundBtn = document.getElementById('fill-color-btn');
+const resetBtn = document.getElementById('reset-btn');
+const eraserBtn = document.getElementById('eraser-btn');
 const colorOptions = Array.from(document.getElementsByClassName('color-option'));
 
 const canvas = document.querySelector('canvas');
@@ -10,10 +12,14 @@ const ctx = canvas.getContext('2d'); // canvas에 그림 그리는 붓 역할 ( 
 canvas.width = 800; // canvas를 css 파일, js 파일에서 사이즈 지정해줘야 한다.
 canvas.height = 800;
 
+CANVAS_WIDTH = canvas.width;
+CANVAS_HEIGHT = canvas.height;
+
 ctx.lineWidth = lineWidth.value;
 
 let isPainting = false;
 let isBackgroundFilling = false;
+let isErasering = false;
 
 function mouseMove(e) {
   if (isPainting) {
@@ -51,8 +57,9 @@ function onColorChange(e) {
   color.value = colorValue;
 }
 function onFillBackgroundColor() {
+  // 배경색 채우기
   if (isBackgroundFilling) {
-    ctx.fillRect(0, 0, 800, 800);
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   }
 }
 function onFillBackgroundBtnClick() {
@@ -60,9 +67,24 @@ function onFillBackgroundBtnClick() {
     isBackgroundFilling = false;
     fillBackgroundBtn.innerText = 'Fill';
   } else {
+    isPainting = false;
     isBackgroundFilling = true;
     fillBackgroundBtn.innerText = 'Draw';
   }
+}
+function onResetBtnClick() {
+  ctx.beginPath();
+  ctx.fillStyle = 'white';
+  ctx.strokeStyle = 'white';
+  color.value = '#ffffff';
+  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+}
+function onEraserBtnClick() {
+  ctx.beginPath();
+  isBackgroundFilling = false;
+  fillBackgroundBtn.innerText = 'Fill';
+  color.value = '#ffffff';
+  ctx.strokeStyle = 'white';
 }
 
 colorOptions.forEach(color => color.addEventListener('click', onColorClick));
@@ -78,6 +100,8 @@ lineWidth.addEventListener('change', onLineWidthChange);
 color.addEventListener('change', onColorChange);
 
 fillBackgroundBtn.addEventListener('click', onFillBackgroundBtnClick);
+resetBtn.addEventListener('click', onResetBtnClick);
+eraserBtn.addEventListener('click', onEraserBtnClick);
 
 /* 아래 컨버스에 색 다른 선들 만들기 */
 
