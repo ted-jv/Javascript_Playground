@@ -1,0 +1,50 @@
+.container {
+  width: 500px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+.album {
+  width: 500px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.images {
+  display: flex;
+  height: 250px;
+}
+
+img {
+  width: 500px;
+  height: 250px;
+}
+
+button,
+button:active,
+button:focus {
+  width: 150px;
+  height: 30px;
+  border: none;
+  color: white;
+  background-color: teal;
+  outline: none;
+}
+
+button:hover {
+  background-color: turquoise;
+}
+button:disabled {
+  background-color: gray;
+}
+
+.prev {
+  float: left;
+}
+
+.next {
+  float: right;
+}
