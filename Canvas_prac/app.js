@@ -1,5 +1,6 @@
 const lineWidth = document.getElementById('line-width');
-const lineColor = document.getElementById('line-color');
+const color = document.getElementById('line-color');
+const fillBackgroundBtn = document.getElementById('fill-color-btn');
 const colorOptions = Array.from(document.getElementsByClassName('color-option'));
 
 const canvas = document.querySelector('canvas');
@@ -12,6 +13,7 @@ canvas.height = 800;
 ctx.lineWidth = lineWidth.value;
 
 let isPainting = false;
+let isBackgroundFilling = false;
 
 function mouseMove(e) {
   if (isPainting) {
@@ -32,24 +34,51 @@ function onLineWidthChange(e) {
   ctx.lineWidth = e.target.value;
   ctx.beginPath();
 }
-function onLineColorChange(e) {
-  ctx.strokeStyle = e.target.value;
+function onColorClick(e) {
+  // 오른쪽 컬러 모음 클릭으로 변경
   ctx.beginPath();
+  const colorValue = e.target.dataset.color;
+  ctx.strokeStyle = colorValue;
+  ctx.fillStyle = colorValue;
+  color.value = colorValue;
 }
-function onLineColorClick(e) {
-  //   console.dir(e.target.dataset.color); // dir로 dataset의 내용 확인 가능
-  ctx.strokeStyle = e.target.dataset.color;
+function onColorChange(e) {
+  // 왼쪽 컬러 변경
   ctx.beginPath();
+  const colorValue = e.target.value;
+  ctx.strokeStyle = colorValue;
+  ctx.fillStyle = colorValue;
+  color.value = colorValue;
 }
-colorOptions.forEach(color => color.addEventListener('click', onLineColorClick));
+function onFillBackgroundColor() {
+  if (isBackgroundFilling) {
+    ctx.fillRect(0, 0, 800, 800);
+  }
+}
+function onFillBackgroundBtnClick() {
+  if (isBackgroundFilling) {
+    isBackgroundFilling = false;
+    fillBackgroundBtn.innerText = 'Fill';
+  } else {
+    isBackgroundFilling = true;
+    fillBackgroundBtn.innerText = 'Draw';
+  }
+}
 
+colorOptions.forEach(color => color.addEventListener('click', onColorClick));
+
+/* 이벤트 리스너 */
 canvas.addEventListener('mousemove', mouseMove);
 canvas.addEventListener('mousedown', startPainting);
 canvas.addEventListener('mouseup', cancelPainting);
 canvas.addEventListener('mouseleave', cancelPainting);
+canvas.addEventListener('click', onFillBackgroundColor);
 
 lineWidth.addEventListener('change', onLineWidthChange);
-lineColor.addEventListener('change', onLineColorChange);
+color.addEventListener('change', onColorChange);
+
+fillBackgroundBtn.addEventListener('click', onFillBackgroundBtnClick);
+
 /* 아래 컨버스에 색 다른 선들 만들기 */
 
 // const colors = ['#32ff7e', '#7efff5', '#18dcff'];
