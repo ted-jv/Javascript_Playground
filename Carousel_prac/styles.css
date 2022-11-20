@@ -1,5 +1,5 @@
 .container {
-  width: 500px;
+  width: 400px;
   margin: auto;
 }
 
@@ -8,7 +8,6 @@ h1 {
 }
 
 .album {
-  width: 500px;
   height: 250px;
   overflow: hidden;
 }
@@ -16,11 +15,13 @@ h1 {
 .images {
   display: flex;
   height: 250px;
+  transition: transform 0.5s;
 }
 
 img {
-  width: 500px;
+  width: 400px;
   height: 250px;
+  object-fit: cover;
 }
 
 button,
@@ -35,10 +36,12 @@ button:focus {
 }
 
 button:hover {
+  /* transform: translate(10px, 10px); */
+  /* transform: scaleX(3); */
   background-color: turquoise;
 }
 button:disabled {
-  background-color: gray;
+  background-color: red;
 }
 
 .prev {
