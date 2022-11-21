@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'EliceDigitalBaeum_Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EliceDigitalBaeum_Bold.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
 * {
   box-sizing: border-box;
+  font-family: 'EliceDigitalBaeum_Bold';
 }
 
 html,
@@ -13,7 +21,7 @@ body {
   min-width: 350px;
   max-width: 640px;
   padding: 5px 0 15px;
-  margin: 15px auto;
+  margin: 100px auto;
   border: 2px solid white;
   text-align: center;
   border-radius: 16px;
