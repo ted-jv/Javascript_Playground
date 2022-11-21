@@ -12,11 +12,22 @@ const buttonReset = document.querySelector('#Reset');
 let intervalId; // setInterval은 실행시 Id 값이 나온다. 그걸 삭제시 종료!
 
 buttonStart.onclick = () => {
+  clearInterval(intervalId); // start 두 번 이상 누르면 intervalId 겹쳐서 stop 안 되므로 !
   intervalId = setInterval(operateTimer, 10);
 };
 
 buttonStop.onclick = () => {
   clearInterval(intervalId); // 위의 setInterval의 Id 삭제로 종료!
+};
+
+buttonReset.onclick = () => {
+  clearInterval(intervalId);
+  tenmillis = 0;
+  seconds = 0;
+  minutes = 0;
+  appendTenmillis.textContent = '00';
+  appendSec.textContent = '00';
+  appendMin.textContent = '00';
 };
 
 //10ms 마다 시간 증가
