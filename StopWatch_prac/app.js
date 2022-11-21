@@ -9,8 +9,14 @@ const buttonStart = document.querySelector('#Start');
 const buttonStop = document.querySelector('#Stop');
 const buttonReset = document.querySelector('#Reset');
 
+let intervalId; // setInterval은 실행시 Id 값이 나온다. 그걸 삭제시 종료!
+
 buttonStart.onclick = () => {
-  setInterval(operateTimer, 10);
+  intervalId = setInterval(operateTimer, 10);
+};
+
+buttonStop.onclick = () => {
+  clearInterval(intervalId); // 위의 setInterval의 Id 삭제로 종료!
 };
 
 //10ms 마다 시간 증가
