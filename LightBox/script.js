@@ -13,14 +13,11 @@ function onImgClick() {
   let lightBoximgSrc = this.src;
   img.src = lightBoximgSrc;
   lightBox.appendChild(img);
-
-  // lightBox.style.cssText = 'display: flex; justify-content: center; align-items: center';
 }
 
 lightBox.addEventListener('click', onImgRemoveClick);
 
 function onImgRemoveClick() {
-  // lightBox.style.display = 'none';
   lightBox.classList.remove('visible');
   lightBox.removeChild(lightBox.firstChild);
 }
