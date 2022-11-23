@@ -8,18 +8,19 @@ images.forEach(image => {
 });
 
 function onImgClick() {
-  lightBox.classList.add('active');
+  lightBox.classList.add('visible');
   const img = document.createElement('img');
   let lightBoximgSrc = this.src;
   img.src = lightBoximgSrc;
   lightBox.appendChild(img);
 
-  lightBox.style.cssText = 'display: flex; justify-content: center; align-items: center';
+  // lightBox.style.cssText = 'display: flex; justify-content: center; align-items: center';
 }
 
 lightBox.addEventListener('click', onImgRemoveClick);
 
 function onImgRemoveClick() {
-  lightBox.style.display = 'none';
+  // lightBox.style.display = 'none';
+  lightBox.classList.remove('visible');
   lightBox.removeChild(lightBox.firstChild);
 }

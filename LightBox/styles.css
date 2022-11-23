@@ -28,6 +28,12 @@ body {
   display: none;
 }
 
+#lightbox.visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #lightbox img {
   width: 400px;
   height: 400px;
@@ -35,3 +41,12 @@ body {
   background-color: black;
   border: 2px solid white;
 }
+
+/* 아래 확인해볼 것*/
+/* #id.class {
+  color: red;
+}
+
+#id .class {
+  color: red;
+} */
