@@ -8,14 +8,20 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <button id="modal-btn">open</button>
+    <button data-modal-target="#modal">open</button>
     <div id="modal" class="modal">
       <div class="modal-header">
-        <div class="modal-header-title"></div>
-        <button class="modal-close-btn">&times;</button>
+        <div class="title">가나다라</div>
+        <button data-close-target class="close-btn">&times;</button>
       </div>
-      <div class="modal-body"></div>
+      <div class="modal-body">
+        Kroenke Sports & Entertainment (KSE) is an American sports and entertainment holding company based in Denver, Colorado. Originally known as Kroenke Sports Enterprises, it was started in 1999
+        by businessman Stan Kroenke to be the parent company of his sports holdings. Today, the company has control of over five professional sport franchises, and one association football club that
+        has two teams Arsenal F.C and Arsenal W.F.C, four stadiums, two professional esports franchised teams, four television channels, an internet TV channel, & 19 magazines which operate under the
+        badge Outdoor Sportsman Group, four radio stations which operate under the badge KSE Radio Ventures, LLC, and websites.
+      </div>
     </div>
+    <div id="overlay"></div>
     <script src="script.js"></script>
   </body>
 </html>
