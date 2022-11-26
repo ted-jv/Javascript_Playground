@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #9b59b6;
+}
+
+.wrapper {
+  background: white;
+  width: 450px;
+  border-radius: 10px;
+}
+
+.wrapper header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px 10px;
+}
+
+header .current-date {
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+header .icons span {
+  display: inline-block;
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  color: #878787;
+  font-size: 1.9rem;
+  cursor: pointer;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 50%;
+}
+
+header .icons span:hover {
+  background: #f2f2f2;
+}
+
+header .icons span:last-child {
+  margin-right: -10px;
+}
+
+.calendar {
+  padding: 20px;
+}
+
+.calendar .weeks li {
+  font-weight: 600;
+}
+
+.calendar .days {
+  margin-bottom: 20px;
+}
+
+.calendar .days li {
+  cursor: pointer;
+  margin-top: 30px;
+  z-index: 1;
+}
+
+.calendar ul {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.calendar ul li {
+  position: relative;
+  width: calc(100% / 7);
+}
+
+.days li.inactive {
+  color: #aaa;
+}
+.days li.active {
+  color: #fff;
+}
+
+.days li.active::before {
+  background-color: #9b59b6;
+}
+
+.calendar .days li::before {
+  position: absolute;
+  content: '';
+  z-index: -1;
+  height: 40px;
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+/* 바로 위 positon:absolute 만 있을 때는 html 기준이므로 저 배경색을 가진 박스가 하나만 보인다. but 바로 위 li 전체에 relative를 달면 전체 li에 이 박스가 보인다. */
+
+.days li:hover::before {
+  background-color: #f2f2f2;
+}
