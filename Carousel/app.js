@@ -1,5 +1,5 @@
 let currentIndex = 0; // 현재 이미지 인덱스
-let positionValuse = 0; // 사진 위치
+let positionValue = 0; // 사진 위치
 const IMAGE_WIDTH = 400;
 
 const prevBtn = document.querySelector('.prev');
@@ -15,8 +15,8 @@ function init() {
 function next() {
   if (currentIndex < 2) {
     prevBtn.removeAttribute('disabled');
-    positionValuse -= IMAGE_WIDTH;
-    images.style.transform = `translateX(${positionValuse}px)`;
+    positionValue -= IMAGE_WIDTH;
+    images.style.transform = `translateX(${positionValue}px)`;
     currentIndex += 1;
   }
   if (currentIndex === 2) {
@@ -27,8 +27,8 @@ function next() {
 function prev() {
   if (0 < currentIndex) {
     nextBtn.removeAttribute('disabled');
-    positionValuse += IMAGE_WIDTH;
-    images.style.transform = `translateX(${positionValuse}px)`;
+    positionValue += IMAGE_WIDTH;
+    images.style.transform = `translateX(${positionValue}px)`;
     currentIndex -= 1;
   }
   if (currentIndex === 0) {
