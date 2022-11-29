@@ -38,6 +38,14 @@ const renderCalendar = () => {
 prevNextBtn.forEach(btn => {
   btn.addEventListener('click', () => {
     currMonth = btn.id === 'prev' ? currMonth - 1 : currMonth + 1;
+
+    if (currMonth < 0 || currMonth > 11) {
+      date = new Date(currYear, currMonth);
+      currYear = date.getFullYear();
+      currMonth = date.getMonth();
+    } else {
+      date = new Date();
+    }
     renderCalendar();
   });
 });
