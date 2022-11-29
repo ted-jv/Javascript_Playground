@@ -10,9 +10,10 @@ let date = new Date(),
 const months = ['January', 'February', 'March', 'April', 'May', 'August', 'Jun', 'July', 'September', 'October', 'November', 'December'];
 
 const renderCalendar = () => {
-  let firstDayofMonth = new Date(currYear, currMonth, 1).getDay();
-  let lastDayOfMonth = new Date(currYear, currMonth + 1, 0).getDate();
-  lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
+  let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(); // 현재 일주일
+  let lastDateOfMonth = new Date(currYear, currMonth + 1, 0).getDate(); // 최근 31일 구한 것
+  lastDayofMonth = new Date(currYear, currMonth, lastDateOfMonth).getDay();
+  lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // 지난 달 31일 구한 것
 
   let liTag = '';
 
@@ -20,8 +21,12 @@ const renderCalendar = () => {
     liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
   }
 
-  for (let i = 1; i <= lastDayOfMonth; i++) {
+  for (let i = 1; i <= lastDateOfMonth; i++) {
     liTag += `<li>${i}</li>`;
+  }
+
+  for (let i = lastDayofMonth; i < 6; i++) {
+    liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
   }
 
   currentDate.innerText = `${months[currMonth]} ${currYear}`;
