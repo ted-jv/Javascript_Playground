@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+.numbers {
+  display: flex;
+  height: 100px;
+}
+
+.numbers > .lottonumber {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
