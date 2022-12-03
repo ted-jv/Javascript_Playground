@@ -2,13 +2,45 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 350px;
+  height: 100vh;
+  margin: auto;
+}
+
+.lotto {
+  text-align: center;
+}
 .numbers {
   display: flex;
-  height: 100px;
+  height: 150px;
+  justify-content: center;
 }
 
 .numbers > .lottonumber {
   display: flex;
   align-items: center;
-  margin-right: 10px;
+  margin: 10px;
+  font-size: 2rem;
+}
+
+button {
+  font-size: 1rem;
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  background-color: salmon;
+  cursor: pointer;
+}
+
+button:active {
+  color: antiquewhite;
 }
