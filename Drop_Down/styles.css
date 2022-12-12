@@ -1,0 +1,65 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+#header {
+  display: flex;
+  background-color: red;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 80px;
+  height: 100px;
+}
+
+.logo > img {
+  height: auto;
+  max-width: 100%;
+}
+
+.main-nav ul {
+  float: right;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.main-nav ul li {
+  float: left;
+  margin: 0 0 0 5px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-weight: 400;
+  position: relative;
+}
+
+ul li a {
+  color: white;
+  line-height: 1.4;
+  padding: 5px 15px;
+}
+
+/* hover */
+
+ul li:hover a {
+  color: beige;
+}
