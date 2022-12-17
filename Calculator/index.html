@@ -13,24 +13,52 @@
         <div class="result"><input type="text" name="display" id="display" /></div>
         <div class="buttons">
           <div class="rows">
-            <input type="button" value="7" name="v7" /><input type="button" value="8" name="v8" /><input type="button" value="9" name="v9" /><input type="button" value="+" name="v+" />
+            <input type="button" value="7" name="v7" onclick="val(v7.value)" /><input type="button" value="8" name="v8" onclick="val(v8.value)" /><input
+              type="button"
+              value="9"
+              name="v9"
+              onclick="val(v9.value)"
+            /><input type="button" value="+" name="vplus" onclick="val(vplus.value)" />
           </div>
           <div class="rows">
-            <input type="button" value="4" name="v4" /><input type="button" value="5" name="v5" /><input type="button" value="6" name="v6" /><input type="button" value="-" name="v-" />
+            <input type="button" value="4" name="v4" onclick="val(v4.value)" /><input type="button" value="5" name="v5" onclick="val(v5.value)" /><input
+              type="button"
+              value="6"
+              name="v6"
+              onclick="val(v6.value)"
+            /><input type="button" value="-" name="vminus" onclick="val(vminus.value)" />
           </div>
           <div class="rows">
-            <input type="button" value="1" name="v1" /><input type="button" value="2" name="v2" /><input type="button" value="3" name="v3" /><input type="button" value="*" name="v*" />
+            <input type="button" value="1" name="v1" onclick="val(v1.value)" /><input type="button" value="2" name="v2" onclick="val(v2.value)" /><input
+              type="button"
+              value="3"
+              name="v3"
+              onclick="val(v3.value)"
+            /><input type="button" value="*" name="vmul" onclick="val(vmul.value)" />
           </div>
           <div class="rows">
-            <input type="button" value="0" name="v0" /><input type="button" value="." name="v." /><input type="button" value="/" name="v/" /><input type="button" value="=" name="v=" />
+            <input type="button" value="0" name="v0" onclick="val(v0.value)" /><input type="button" value="." name="vdot" onclick="val(vdot.value)" /><input
+              type="button"
+              value="/"
+              name="vdiv"
+              onclick="val(vdiv.value)"
+            /><input type="button" value="=" name="veql" onclick="calculator()" />
           </div>
         </div>
       </form>
     </div>
 
     <!-- <script>
-      function btn() {
-        console.log('hello');
+      function val(result) {
+        form.display.value = form.display.value + result;
+      }
+
+      function calculator() {
+        if (form.display.value == '') {
+          alert('Please enter numbers');
+        } else {
+          form.display.value = eval(form.display.value);
+        }
       }
     </script> -->
     <script src="script.js"></script>
