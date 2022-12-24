@@ -1,23 +1,53 @@
 const wrapper = document.querySelector('.wrapper');
 selectBtn = wrapper.querySelector('.select-btn');
 options = wrapper.querySelector('.options');
+searchInp = wrapper.querySelector('input');
+const countries = [
+  'Algeria',
+  'Australia',
+  'Argentina',
+  'Colombia',
+  'Denmark',
+  'Belarus',
+  'Brazil',
+  'Cameroon',
+  'Germany',
+  'Korea',
+  'Belgium',
+  'Bolivia',
+  'Chile',
+  'Canada',
+];
 
-const countries = ['Australia', 'Colombia', 'Denmark', 'Germany', 'Korea', 'Belgium', 'Bolivia', 'Chile', 'Canada'];
-
+// 나라 클릭시 맨 위 박스 이름 변경
 function addCountry() {
+  options.innerHTML = '';
   countries.forEach(country => {
     let li = `<li onclick="updateName(this)">${country}</li>`;
     options.insertAdjacentHTML('beforeend', li);
   });
 }
 
+addCountry();
+
+function updateName(selectedLi) {
+  searchInp.value = '';
+  addCountry();
+  wrapper.classList.remove('active');
+  selectBtn.firstElementChild.innerText = selectedLi.innerText;
+}
+
 selectBtn.addEventListener('click', () => {
   wrapper.classList.toggle('active');
 });
 
-addCountry();
+searchInp.addEventListener('keyup', () => {
+  let searchVal = searchInp.value.toLowerCase();
+  arr = [];
+  arr = countries
+    .filter(data => data.toLowerCase().startsWith(searchVal))
+    .map(data => `<li onclick="updateName(this)">${data}</li>`)
+    .join('');
 
-function updateName(selectedLi) {
-  wrapper.classList.remove('active');
-  selectBtn.firstElementChild.innerText = selectedLi.innerText;
-}
+  options.innerHTML = arr ? arr : `<p>Country not found</p>`;
+});
