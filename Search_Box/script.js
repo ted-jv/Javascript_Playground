@@ -20,10 +20,13 @@ const countries = [
 ];
 
 // 나라 클릭시 맨 위 박스 이름 변경
-function addCountry() {
+function addCountry(selectedCountry) {
   options.innerHTML = '';
   countries.forEach(country => {
-    let li = `<li onclick="updateName(this)">${country}</li>`;
+    // click한 나라 li에 selected class 추가
+    let isSelected = country == selectedCountry ? 'selected' : '';
+    // country 추가 &
+    let li = `<li onclick="updateName(this)" class="${isSelected}">${country}</li>`;
     options.insertAdjacentHTML('beforeend', li);
   });
 }
@@ -32,7 +35,7 @@ addCountry();
 
 function updateName(selectedLi) {
   searchInp.value = '';
-  addCountry();
+  addCountry(selectedLi.innerText);
   wrapper.classList.remove('active');
   selectBtn.firstElementChild.innerText = selectedLi.innerText;
 }
