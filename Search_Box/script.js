@@ -6,7 +6,7 @@ const countries = ['Australia', 'Colombia', 'Denmark', 'Germany', 'Korea', 'Belg
 
 function addCountry() {
   countries.forEach(country => {
-    let li = `<li>${country}</li>`;
+    let li = `<li onclick="updateName(this)">${country}</li>`;
     options.insertAdjacentHTML('beforeend', li);
   });
 }
@@ -16,3 +16,8 @@ selectBtn.addEventListener('click', () => {
 });
 
 addCountry();
+
+function updateName(selectedLi) {
+  wrapper.classList.remove('active');
+  selectBtn.firstElementChild.innerText = selectedLi.innerText;
+}
